@@ -1,0 +1,37 @@
+@import '../../../utils/common.scss';
+
+.color-picker {
+	display: flex;
+	flex-direction: column;
+
+	&__label {
+		font-weight: 500;
+		font-size: toRem(16);
+		color: #000;
+		margin-bottom: toRem(10);
+
+		@media (min-width: $mobile) {
+			margin-bottom: toRem(20);
+		}
+	}
+	&__content {
+		display: flex;
+		align-items: flex-end;
+		gap: em(12);
+	}
+	&__output {
+		font-size: em(24);
+		width: 7em;
+	}
+	&__color {
+		width: em(52);
+		height: em(52);
+		font-size: toRem(18);
+		@media (min-width: $mobileSmall) {
+			font-size: toRem(20);
+		}
+		@media (min-width: $tablet) {
+			font-size: toRem(24);
+		}
+	}
+}

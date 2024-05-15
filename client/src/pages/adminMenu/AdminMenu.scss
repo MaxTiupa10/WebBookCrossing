@@ -1,0 +1,60 @@
+@import '../../utils/common.scss';
+.create-product {
+	margin-bottom: em(24);
+	display: flex;
+	flex-direction: column;
+	gap: em(24);
+	@media (min-width: $mobile) {
+		gap: em(36);
+	}
+	&__two-in-row {
+		display: grid;
+		grid-template-columns: 1fr;
+		align-items: end;
+		gap: em(24);
+		@media (min-width: $mobile) {
+			grid-template-columns: 1fr 1fr;
+			gap: em(36);
+		}
+	}
+	&__button {
+		max-width: fit-content;
+	}
+
+	&__image-uploader {
+		display: grid;
+		gap: em(15);
+		grid-template-columns: 1fr;
+		@media (min-width: $mobile) {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+	&__slider-container {
+		overflow: hidden;
+		position: relative;
+		padding-bottom: 60%;
+		border: 1px solid $greyColor;
+		border-radius: 15px;
+	}
+	&__slider {
+		position: absolute !important;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+	&__slider-image-container {
+		overflow: hidden;
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+	&__slider-image {
+		position: absolute;
+		top: 0;
+		left: .5%;
+		width: 99%;
+		height: 100%;
+		object-fit: contain;
+	}
+}

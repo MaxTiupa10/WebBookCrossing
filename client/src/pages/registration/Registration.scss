@@ -1,0 +1,49 @@
+@import '../../utils/common.scss';
+
+.registration {
+   display: flex;
+   justify-content: center;
+   margin-top: toRem(30);
+   @include adaptiveValue("margin-bottom", 120, 30);
+	> form {
+      width: 100%;
+      max-width: toRem(700);
+		display: flex;
+		flex-direction: column;
+		gap: toRem(18);
+		@media (min-width: $tablet) {
+			gap: toRem(36);
+		}
+	}
+
+	// .registration__form-title
+	&__form-title {
+      text-align: center;
+		font-weight: 600;
+		font-size: toRem(24);
+      @media (min-width:$mobileSmall){
+         font-size: toRem(28);
+      }
+      @media (min-width:$tablet){
+         font-size: toRem(36);
+      }
+	}
+
+	&__field {
+	}
+
+   &__hint {
+      @include adaptiveValue("font-size", 16, 12);
+      margin-top: toRem(5);
+   }
+
+   &__button {
+      width: 100%;
+		@media (min-width:$mobileSmall){
+			max-width: toRem(200);
+		}
+      @media (min-width:$tablet){
+         height: toRem(64);
+      }
+   }
+}

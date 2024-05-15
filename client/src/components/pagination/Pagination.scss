@@ -1,0 +1,85 @@
+@import '../../utils/common.scss';
+
+.pagination {
+	display: grid;
+	justify-content: center;
+	grid-template-columns: auto 1fr auto;
+	gap: toRem(5);
+
+	@media (min-width: em(580)) {
+		grid-template-columns: auto em(460, 20) auto;
+		gap: toRem(25);
+	}
+
+	padding-top: toRem(20);
+	padding-bottom: toRem(20);
+	@media (min-width: $mobileSmall) {
+		padding-top: toRem(40);
+		padding-bottom: toRem(40);
+	}
+	@media (min-width: $tablet) {
+		padding-top: toRem(70);
+		padding-bottom: toRem(70);
+	}
+
+	@include adaptiveValue('font-size', 20, 16);
+	// .pagination__list
+	&__list {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		align-items: center;
+		row-gap: toRem(15);
+		@include adaptiveValue('column-gap', 40, 20);
+	}
+
+	// .pagination__item
+	&__item {
+	}
+	&__button {
+		display: grid;
+		place-items: center;
+		background-color: $lightSandColor;
+		border-radius: toRem(10);
+		width: em(60, 20);
+		height: em(60, 20);
+		transition: all 0.3s;
+
+		@media (any-hover: hover) {
+			&:hover {
+				color: #fff;
+				background-color: $goldColor;
+			}
+		}
+
+		&.next,
+		&.prev {
+			&:disabled {
+				color: $lightGreyColor;
+				cursor: auto;
+			}
+			@media (any-hover: hover) {
+				&:hover {
+					background-color: $lightGreyColor;
+					color: #000;
+				}
+				&:disabled:hover {
+					background-color: $lightSandColor;
+					color: $lightGreyColor;
+				}
+			}
+		}
+
+		&.prev {
+			&::before {
+				transform: rotate(-180deg);
+			}
+		}
+
+		&.active {
+			color: #fff;
+			cursor: auto;
+			background-color: $goldColor;
+		}
+	}
+}

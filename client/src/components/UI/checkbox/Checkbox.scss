@@ -1,0 +1,60 @@
+@import '../../../utils/common.scss';
+
+.checkbox {
+	display: block;
+	position: relative;
+	@include adaptiveValue('font-size', 16, 14);
+
+	&__input {
+		position: absolute;
+		width: 0;
+		height: 0;
+		opacity: 0;
+
+		&:checked {
+			+ span {
+				&::before {
+					opacity: 1;
+				}
+			}
+		}
+	}
+
+	&__label {
+		position: relative;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: em(20);
+		transition: color 0.3s;
+
+		@media (any-hover: hover) {
+			&:hover {
+				color: $goldColor;
+			}
+		}
+
+		&:has(.checkbox__input:focus-visible) {
+			color: $goldColor;
+		}
+
+		> span {
+			display: flex;
+			font-size: em(20, 16);
+			justify-content: center;
+			align-items: center;
+			border: toRem(1) solid $greyColor;
+			border-radius: em(5, 20);
+			width: em(30, 20);
+			height: em(30, 20);
+
+			&::before {
+				content: '\f00c';
+				font-family: icons;
+				opacity: 0;
+				transition: opacity 0.3s;
+			}
+		}
+	}
+}

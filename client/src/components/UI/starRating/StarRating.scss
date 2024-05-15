@@ -1,0 +1,10 @@
+@import "../../../utils/common.scss";
+.star-rating {
+	&__star {
+		color: $darkGreyColor;
+		user-select: none;
+		&.active {
+			color: gold;
+		}
+	}
+}

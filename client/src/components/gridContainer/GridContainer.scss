@@ -1,0 +1,7 @@
+@import '../../utils/common.scss';
+
+.grid-container {
+	display: grid;
+	gap: toRem(30);
+	grid-template-columns: repeat(auto-fill, minmax(toRem(260), 1fr));
+}

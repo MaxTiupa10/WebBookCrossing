@@ -1,0 +1,70 @@
+@import '../../../utils/common.scss';
+
+.input-wrapper {
+	display: flex;
+	flex-direction: column;
+
+	&__label {
+		font-weight: 500;
+		font-size: toRem(16);
+		color: #000;
+		padding-bottom: toRem(10);
+		gap: 0 toRem(10);
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+
+		@media (min-width: $mobile) {
+			padding-bottom: toRem(20);
+		}
+	}
+
+	&__label-text {
+	}
+
+	&__error-message {
+		.error & {
+			color: red;
+		}
+	}
+
+	&__input {
+		border: toRem(1) solid $greyColor;
+		border-radius: em(10);
+		padding: em(12) em(10);
+		font-size: toRem(18);
+		transition: border-color 0.3s;
+
+		@media (min-width: $mobileSmall) {
+			font-size: toRem(20);
+		}
+		@media (min-width: $tablet) {
+			font-size: toRem(24);
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+				border-color: #000;
+			}
+		}
+
+		.error & {
+			border-color: red;
+		}
+
+		&::placeholder {
+			color: $greyColor;
+			transition: color 0.3s;
+		}
+
+		&:focus,
+		&:focus-visible,
+		&:focus-within {
+			border-color: $goldColor;
+			outline: none;
+			&::placeholder {
+				color: transparent;
+			}
+		}
+	}
+}

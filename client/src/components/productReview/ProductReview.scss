@@ -1,0 +1,24 @@
+@import '../../utils/common.scss';
+
+.product-review {
+	border: 1px solid $greyColor;
+	border-radius: 10px;
+	padding: em(15);
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		margin-bottom: em(15);
+		gap: em(5);
+	}
+	&__user-name {
+		@include adaptiveValue(font-size, 24, 20, 0, $containerWidth, $mobileWidth);
+		font-weight: 500;
+	}
+	&__rate {
+		@include adaptiveValue(font-size, 24, 20, 0, $containerWidth, $mobileWidth);
+	}
+	&__message {
+		font-weight: em(20);
+	}
+}

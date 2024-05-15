@@ -1,0 +1,37 @@
+@import '../../../utils/common.scss';
+.counter {
+	border-radius: 10px;
+	border: 1px solid black;
+	display: inline-grid;
+	grid-template-columns: 1fr em(72) 1fr;
+	overflow: hidden;
+
+	&__value {
+		text-align: center;
+		&:focus {
+			outline: none;
+		}
+	}
+	&__button {
+		user-select: none;
+		display: block;
+		padding: em(20) 0;
+		transition:
+			color 0.3s,
+			background-color 0.3s;
+		@media (any-hover: hover) {
+			&:hover {
+				color: white;
+				background-color: $goldColor;
+			}
+		}	
+	}
+	&__button_minus {
+		padding-left: em(12);
+		padding-right: em(8);
+	}
+	&__button_plus {
+		padding-right: em(12);
+		padding-left: em(8);
+	}
+}

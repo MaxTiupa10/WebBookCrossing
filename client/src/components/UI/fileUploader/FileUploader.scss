@@ -1,0 +1,49 @@
+@import '../../../utils/common.scss';
+
+.file-uploader {
+	border: 1px solid $greyColor;
+	padding: em(25);
+	border-radius: 15px;
+	@media (any-hover: hover) {
+		&:hover {
+			border-color: #000;
+		}
+	}
+	&__files {
+		position: relative;
+		top: em(-28);
+		width: 0;
+		height: 0;
+	}
+	&__container {	
+		cursor: pointer;
+		text-align: center;
+		display: flex;
+		height: 100%;
+		gap: em(10);
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+		border: 2px dashed $sandColor;
+		padding: em(15);
+		border-radius: 15px;
+		background-color: $lightSandColor;
+		
+	}
+	&__icon {
+		width: 30%;
+	}
+	&__text {
+		font-size: em(15);
+		@media (min-width: $mobile) {
+			font-size: em(20);
+		}
+	}
+	&__counter {
+		font-size: em(15);
+		font-weight: 500;
+		@media (min-width: $mobile) {
+			font-size: em(20);
+		}
+	}
+}

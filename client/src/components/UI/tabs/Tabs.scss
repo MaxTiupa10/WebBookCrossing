@@ -1,0 +1,20 @@
+@import '../../../utils/common.scss';
+
+.tabs__title {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	column-gap: em(52);
+	row-gap: em(15);
+	@include adaptiveValue(margin-bottom, 37, 15, 0, $containerWidth, $mobileWidth);
+}
+
+.tabs__link {
+	@include adaptiveValue(font-size, 24, 20, 0, $containerWidth, $mobileWidth);
+	color: $greyColor
+}
+
+.tabs__link.active {
+	color: $mainColor;
+	font-weight: 500;
+}

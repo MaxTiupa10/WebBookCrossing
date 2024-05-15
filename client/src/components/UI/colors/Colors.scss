@@ -1,0 +1,25 @@
+@import "../../../utils/common.scss";
+.color-list {
+	display: flex;
+	gap: em(16);
+	&__item {
+		border-radius: 50%;
+		width: em(30);
+		height: em(30);
+		border: 1px solid $lightGreyColor;
+		position: relative;
+
+		&.active::after {
+			content: "";
+			display: block;
+			position: absolute;
+			top: -4px;
+			left: -4px;
+			width: calc(100% + 8px);
+			height: calc(100% + 8px);
+			border: 2px solid $goldColor;
+			border-radius: 50%;
+		}
+			
+	}
+}

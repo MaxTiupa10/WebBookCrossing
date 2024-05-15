@@ -1,0 +1,7 @@
+@import '../../utils/common.scss';
+
+.container {
+	margin: 0 auto;
+	max-width: toRem($containerWidth);
+	padding: 0 toRem($halfContainerPadding);
+}

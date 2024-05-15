@@ -1,0 +1,17 @@
+@import '../../../utils/common.scss';
+
+.swiper-pagination-bullet {
+	background-color: $greyColor;
+}
+span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+	background-color: $goldColor;
+}
+.swiper-button-prev,
+.swiper-button-next {
+	color: $goldColor;
+	text-shadow: 0 0 10px grey;
+}
+.swiper-scrollbar {
+	background-color: $goldColor;
+	cursor: pointer;
+}

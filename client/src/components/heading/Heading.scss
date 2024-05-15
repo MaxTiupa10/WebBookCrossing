@@ -1,0 +1,57 @@
+@import '../../utils/common.scss';
+
+.heading {
+	padding: toRem(40) 0;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	@include adaptiveValue('min-height', 315, 180);
+	margin-top: toRem(5);
+
+	// .heading__container
+	&__container {
+		text-align: center;
+		flex: 1 1 auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		position: relative;
+		z-index: 3;
+	}
+	// .heading__title
+	&__title {
+		@include adaptiveValue('font-size', 48, 32);
+		font-weight: 500;
+		margin-bottom: toRem(15);
+	}
+	// .heading__image-ibg
+	&__image {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		filter: blur(3px);
+
+		&::after {
+			content: '';
+			z-index: 2;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			background-color: rgba(255, 255, 255, 0.5);
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+}

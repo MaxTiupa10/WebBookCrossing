@@ -1,0 +1,10 @@
+@import '../../utils/common.scss';
+
+.product-reviews {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: em(20);
+	@media (min-width: $mobile) {
+		grid-template-columns: 1fr 1fr;
+	}
+}

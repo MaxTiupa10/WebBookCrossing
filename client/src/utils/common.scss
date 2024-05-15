@@ -1,0 +1,197 @@
+@use 'sass:math';
+
+//Percent
+@function percent($px, $from: 100) {
+	$result: math.div($px, $from) * 100%;
+	@return $result;
+}
+//REM
+@function toRem($px, $current: 16) {
+	$result: math.div($px, $current) + rem;
+	@return $result;
+}
+//EM
+@function em($px, $current: 16) {
+	$result: math.div($px, $current) + em;
+	@return $result;
+}
+
+// Constants
+@import url(https://fonts.googleapis.com/css?family=Poppins:300,regular,500,600,700&display=swap);
+// За замовчуванням шрифт ==============================================================================================================================================================================================================================================================================
+$fontFamily: 'Poppins';
+$fontSize: 1rem;
+
+// Основні кольори
+$mainColor: #000;
+$sandColor: #fbebb5;
+$lightSandColor: #fff9e5;
+$greyColor: #9f9f9f;
+$lightGreyColor: #b0b0b0;
+$darkGreyColor: #3a3a3a;
+$goldColor: #b88e2f;
+
+// Мінімальна ширина сторінки
+$minWidth: 320;
+// Ширина полотна (макету)
+$maxWidth: 1440;
+// Ширина обмежуючого контейнера
+$maxWidthContainer: 1240;
+$mobileWidth: 767.98;
+// Загальний відступ у контейнера
+$containerPadding: 30;
+$halfContainerPadding: 15;
+
+// Ширина спрацьовування першого брейкпоінту
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+// Брейк-поїнти
+$pc: em(
+	$containerWidth
+); // ПК, ноутбуки, деякі планшети у горизонтальному положенні
+$tablet: em(991.98); // Планшети, деякі телефони в горизонтальному положенні
+$mobile: em(767.98); // Телефони L
+$mobileSmall: em(479.98); // Телефони S
+
+// extend classes
+%linkHover {
+	transition: color 0.3s;
+	@media (any-hover: hover) {
+		&:hover {
+			color: $goldColor;
+		}
+	}
+}
+%ic {
+	font-family: 'icons';
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+%skeleton-animation {
+	position: relative;
+	overflow: hidden;
+	display: inline-block;
+	background-color: $greyColor;
+
+	&::after {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		transform: translate(-100%);
+		background-image: linear-gradient(
+			90deg,
+			rgba(#fff, 0) 0,
+			rgba(#fff, 0.2) 20%,
+			rgba(#fff, 0.5) 60%,
+			rgba(#fff, 0)
+		);
+		animation: shimmer 4s infinite;
+		content: '';
+	}
+
+	@keyframes shimmer {
+		100% {
+			transform: translate(100%);
+		}
+	}
+}
+
+// for image to cover
+[class*='-ibg'] {
+	position: relative;
+	img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		object-fit: cover;
+	}
+}
+
+// Адаптивна властивість (clamp)
+@mixin adaptiveValue(
+	$property,
+	$startSize,
+	$minSize,
+	$keepSize: 0,
+	$widthFrom: $containerWidth,
+	$widthTo: $minWidth
+) {
+	@if ($startSize==0) {
+		$startSize: 0.000001;
+	}
+	@if ($minSize==0) {
+		$minSize: 0.000001;
+	}
+
+	// Для calc();
+	$addSize: math.div($startSize - $minSize, 16);
+
+	@if ($widthFrom == $containerWidth and $maxWidthContainer == 0) {
+		$widthFrom: $maxWidth;
+	}
+
+	// Брейк-поїнти в EM
+	$widthFromMedia: em($widthFrom);
+	$widthToMedia: em($widthTo);
+
+	// Формула плаваючого значення
+	// Источник: https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
+	$slope: math.div(($startSize - $minSize), ($widthFrom - $widthTo));
+	$yIntersection: -$widthTo * $slope + $minSize;
+	@if ($yIntersection==0) {
+		$yIntersection: 0.000001;
+	}
+	$flyValue: #{toRem($yIntersection)}' + ' #{$slope * 100}vw;
+
+	// Отримання значення властивості
+	$propertyValue: #{'clamp(' toRem($minSize) ',' $flyValue ','
+		toRem($startSize) ')'};
+	// Якщо негативні значення
+	@if ($minSize > $startSize) {
+		$propertyValue: #{'clamp('
+			toRem($startSize)
+			','
+			$flyValue
+			','
+			toRem($minSize)
+			')'};
+	}
+
+	// Встановлюємо значення за замовчуванням
+	@if $keepSize != 1 and $keepSize != 3 {
+		@media (min-width: $widthFromMedia) {
+			#{$property}: toRem($startSize);
+		}
+	}
+	// Адаптуємо розмір у проміжку між зазначеними ширинами в'юпорту
+	@media (min-width: $widthToMedia) and (max-width: $widthFromMedia) {
+		// Якщо підтримується clamp();
+		@supports (#{$property}: $propertyValue) {
+			#{$property}: $propertyValue;
+		}
+		// Якщо не підтримується clamp();
+		@supports not (#{$property}: $propertyValue) {
+			#{$property}: calc(
+				#{toRem($minSize)} + #{$addSize} * (100vw - #{toRem($widthTo)}) / #{math.div(
+						$widthFrom,
+						16
+					) - math.div($widthTo, 16)}
+			);
+		}
+	}
+	@if $keepSize != 1 and $keepSize != 2 {
+		@media (max-width: $widthToMedia) {
+			#{$property}: toRem($minSize);
+		}
+	}
+}

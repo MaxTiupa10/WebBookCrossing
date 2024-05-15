@@ -1,0 +1,49 @@
+@import '../../../utils/common.scss';
+
+.textarea-wrapper {
+	display: flex;
+	flex-direction: column;
+	.error {
+		border: 1px solid red;
+	}
+	&__label {
+		font-weight: 500;
+		font-size: toRem(16);
+		color: #000;
+		margin-bottom: toRem(10);
+
+		@media (min-width: $mobile) {
+			margin-bottom: toRem(20);
+		}
+	}
+	&__textarea {
+		
+		width: 100%;
+		border: toRem(1) solid $greyColor;
+		border-radius: em(10);
+		padding: em(16) em(10);
+		font-size: toRem(18);
+		resize: vertical;
+		height: em(150);
+		min-height: em(50);
+
+		@media (min-width: $mobileSmall) {
+			font-size: toRem(20);
+		}
+		@media (min-width: $tablet) {
+			font-size: toRem(24);
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+				border-color: #000;
+			}
+		}
+		&:focus,
+		&:focus-visible,
+		&:focus-within {
+			border-color: $goldColor;
+			outline: none;
+		}
+	}
+}

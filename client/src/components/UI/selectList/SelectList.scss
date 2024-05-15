@@ -1,0 +1,98 @@
+@import '../../../utils/common.scss';
+
+.select-list {
+	&__body {
+		display: grid;
+		grid-template-rows: 0fr;
+		transition: grid-template-rows 0.3s ease;
+		&.active {
+			grid-template-rows: 1fr;
+		}
+	}
+
+	&__content {
+		overflow: hidden;
+	}
+
+	&__title {
+		cursor: pointer;
+		font-weight: 500;
+		color: $greyColor;
+		padding: 0.5em 1em;
+		border-bottom: 1px solid $mainColor;
+		position: relative;
+		transition: color 0.5s ease;
+		&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			width: 1em;
+			height: 1em;
+			bottom: 0.7em;
+			right: 1em;
+			border-bottom: 0.2em solid $greyColor;
+			border-left: 0.2em solid $greyColor;
+			transform: rotate(-45deg);
+			transition:
+				transform 0.5s ease,
+				bottom 0.5s ease,
+				border-color 0.5s ease;
+		}
+		&.active {
+			color: $goldColor;
+		}
+		&.active::after {
+			transform: rotate(135deg);
+			bottom: 0.2em;
+			border-color: $goldColor;
+		}
+	}
+
+	&__link {
+		font-weight: 500;
+		transition: color 0.2s ease;
+		@media (any-hover: hover) {
+			&:hover {
+				color: $goldColor;
+			}
+		}
+	}
+
+	&__element {
+		margin-left: 1em;
+		margin-top: em(20);
+		width: max-content;
+		&:first-of-type {
+			margin-top: 1em;
+		}
+	}
+
+	@media (min-width: $mobile) {
+		&__title {
+			border: none;
+			cursor: initial;
+			padding: 0;
+			&::after {
+				display: none;
+			}
+		}
+
+		&__body {
+			border: none;
+			display: block;
+		}
+
+		&__content {
+			padding: 0;
+			border: none;
+			padding-top: em(55);
+		}
+		&__element {
+			margin-left: 0;
+			margin-top: em(46);
+			&:first-of-type {
+				margin-top: 0;
+			}
+		}
+	}
+}

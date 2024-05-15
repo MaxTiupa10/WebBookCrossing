@@ -1,0 +1,91 @@
+@import '../../utils/common.scss';
+
+.shop-filter {
+	margin-bottom: em(50);
+	background-color: #f9f1e7;
+	@include adaptiveValue('font-size', 16, 12);
+	padding: em(20) 0;
+	// .shop-filter__container
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	// .shop-filter__filters
+	&__filters {
+		display: flex;
+	}
+
+	// .shop-filter__filter
+	&__filter {
+		display: flex;
+		align-items: center;
+		gap: em(30);
+	}
+
+	// .shop-filter__buttons
+	&__buttons {
+		display: flex;
+		gap: em(20);
+	}
+
+	// .shop-filter__filter-button
+	&__filter-button {
+		font-size: toRem(17);
+		display: flex;
+		gap: toRem(10);
+	}
+
+	// .shop-filter__info
+	&__info {
+		display: flex;
+		align-items: center;
+		gap: em(20);
+		&::before {
+			content: '';
+			display: block;
+			background: #9f9f9f;
+			width: em(2);
+			height: em(27);
+		}
+	}
+
+	// .shop-filter__text
+	&__text {
+		font-size: toRem(14);
+	}
+
+	// .shop-filter__display
+	&__display {
+		display: flex;
+		gap: em(15);
+	}
+
+	// .shop-filter__show
+	&__show {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: toRem(10);
+	}
+
+	// .shop-filter__show-filter
+	&__show-filter {
+		flex: 0 0 em(50);
+		width: em(50);
+	}
+
+	// .shop-filter__sort
+	&__sort {
+		display: flex;
+		align-items: center;
+		gap: toRem(10);
+	}
+
+	// .shop-filter__sort-filter
+	&__sort-filter {
+		flex: 0 0 em(70);
+		width: em(70);
+	}
+}

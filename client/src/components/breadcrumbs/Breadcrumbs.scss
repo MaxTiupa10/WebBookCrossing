@@ -1,0 +1,65 @@
+@import '../../utils/common.scss';
+
+.breadcrumbs {
+	// .breadcrumbs__container
+	&__container {
+	}
+	// .breadcrumbs__list
+	&__list {
+		@include adaptiveValue("font-size", 20, 14);
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: em(16) em(13);
+
+		@media (max-width: $mobileSmall) {
+			gap: em(10) em(8);
+		}
+	}
+	// .breadcrumbs__item
+	&__item {
+		color: $mainColor;
+		display: inline-flex;
+		align-items: center;
+		gap: em(16);
+
+		@media (max-width: $mobileSmall) {
+			gap: em(10);
+		}
+
+		&:not(.active) {
+			@extend %linkHover;
+		}
+
+		&:not(:last-child) {
+			&::after {
+				@extend %ic;
+				display: block;
+				content: "\e902";
+				font-size: em(20);
+				font-weight: 500;
+				color: #000;
+			}
+		}
+
+		&:last-child:not(:nth-child(2)) {
+			gap: em(26);
+			@media (max-width: $mobileSmall) {
+				gap: em(10);
+			}
+			&::before {
+				content: "";
+				display: block;
+				background: #9f9f9f;
+				width: em(2);
+				height: em(37);
+			}
+		}
+
+		&.active {
+			pointer-events: none;
+			font-weight: 500;
+		}
+	}
+}

@@ -1,0 +1,153 @@
+/* For input icons */
+/* @import '../../assets/iconfont/iconfont.css'; */
+
+@font-face {
+	font-family: icons;
+	font-display: swap;
+	src:
+		url('./icons.woff2') format('woff2'),
+		url('./icons.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
+[class*='_icon-']:before {
+	display: inline-block;
+	font-family: icons;
+}
+
+._icon-arrow-big-right:before {
+	content: "\e902";
+}
+
+._icon-arrow:before {
+	content: "\e903";
+}
+
+._icon-arrow-right:before {
+	content: "\e904";
+}
+
+._icon-calender:before {
+	content: "\e905";
+}
+
+._icon-cart:before {
+	content: "\e906";
+}
+
+._icon-clock:before {
+	content: "\e907";
+}
+
+._icon-compare:before {
+	content: "\e908";
+}
+
+._icon-cross:before {
+	content: "\e909";
+}
+
+._icon-filters:before {
+	content: "\e90a";
+}
+
+._icon-grid:before {
+	content: "\e90b";
+}
+
+._icon-heart:before {
+	content: "\e90c";
+}
+
+._icon-location:before {
+	content: "\e90d";
+}
+
+._icon-phone:before {
+	content: "\e916";
+}
+
+._icon-search:before {
+	content: "\e90f";
+}
+
+._icon-share1:before {
+	content: "\e910";
+}
+
+._icon-shop:before {
+	content: "\e901";
+}
+
+._icon-tag:before {
+	content: "\e912";
+}
+
+._icon-trash-can:before {
+	content: "\e913";
+}
+
+._icon-view-list:before {
+	content: "\e915";
+}
+
+._icon-account:before {
+	content: "\f007";
+}
+
+._icon-check:before {
+	content: "\f00c";
+}
+
+._icon-eye-open:before {
+	content: "\f06e";
+}
+
+._icon-eye-closed:before {
+	content: "\f070";
+}
+
+._icon-sign-in:before {
+	content: "\f090";
+}
+
+._icon-ellipsis:before {
+	content: "\f142";
+}
+
+._icon-sort-asc:before {
+	content: "\f160";
+}
+
+._icon-sort-desc:before {
+	content: "\f161";
+}
+
+._icon-account-create:before {
+	content: "\f234";
+}
+
+._icon-images:before {
+	content: "\e90e";
+}
+
+._icon-music:before {
+	content: "\e911";
+}
+
+._icon-video:before {
+	content: "\e914";
+}
+
+._icon-reply-arrow:before {
+	content: "\e969";
+}
+
+._icon-link:before {
+	content: "\e9cb";
+}
+
+._icon-share:before {
+	content: "\ea82";
+}

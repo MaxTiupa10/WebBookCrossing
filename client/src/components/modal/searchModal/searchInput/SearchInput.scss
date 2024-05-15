@@ -1,0 +1,105 @@
+@import '../../../../utils/common.scss';
+
+.search-input {
+	display: flex;
+	flex-direction: column;
+
+	// .search-input__label
+	&__label {
+		font-weight: 500;
+		font-size: toRem(16);
+		color: #000;
+		margin-bottom: toRem(10);
+
+		@media (min-width: $mobile) {
+			margin-bottom: toRem(20);
+		}
+	}
+
+	&__wrapper {
+		display: flex;
+		align-items: stretch;
+		justify-content: space-between;
+		font-size: toRem(18);
+
+		@media (min-width: $mobileSmall) {
+			font-size: toRem(20);
+		}
+		@media (min-width: $tablet) {
+			font-size: toRem(24);
+		}
+	}
+
+	// .search-input__input
+	&__input {
+		flex: 1 1 auto;
+		border: toRem(1) solid $greyColor;
+		border-right: none;
+		border-radius: em(10) 0 0 em(10);
+		padding: em(10) em(12, 24);
+		width: 100%;
+		transition: border-color 0.3s;
+
+		@media (any-hover: hover) {
+			&:hover {
+				border-color: #000;
+				+ .search-input__button {
+					border-color: #000;
+				}
+			}
+		}
+
+		&::placeholder {
+			color: $greyColor;
+			transition: color 0.3s;
+		}
+
+		&:focus,
+		&:focus-visible,
+		&:focus-within {
+			outline: none;
+			border-color: $goldColor;
+			+ .search-input__button {
+				border-color: $goldColor;
+			}
+
+			&::placeholder {
+				color: transparent;
+			}
+		}
+	}
+
+	// .search-input__button
+	&__button {
+		flex: 0 0 em(60, 24);
+		width: em(60, 24);
+		transition: all 0.3s;
+		border: toRem(1) solid $greyColor;
+		border-radius: 0 em(10) em(10) 0;
+
+		&::before {
+			font-size: em(30, 24);
+			display: inline-block;
+		}
+
+		&:focus-visible {
+			outline: 0;
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+				border-color: $goldColor;
+				background-color: $goldColor;
+				color: #fff;
+			}
+		}
+
+		&:focus,
+		&:focus-visible,
+		&:focus-within {
+			border-color: $goldColor;
+			background-color: $goldColor;
+			color: #fff;
+		}
+	}
+}

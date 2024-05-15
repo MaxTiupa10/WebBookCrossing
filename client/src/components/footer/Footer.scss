@@ -1,0 +1,109 @@
+@import "../../utils/common.scss";
+
+.footer {
+	border-top: 1px solid $greyColor;
+}
+.footer__container {
+	padding: 0 toRem($halfContainerPadding);
+}
+.footer__content {
+	@include adaptiveValue("padding-top", 50, 20, 0, $containerWidth, 767.98);
+	@include adaptiveValue("padding-bottom", 50, 20, 0, $containerWidth, 767.98);
+}
+
+.footer__logo {
+	font-size: 24px;
+	font-weight: 700;
+}
+.footer__location {
+	margin-top: em(20);
+	font-size: toRem(16);
+	font-weight: 400;
+	color: $greyColor;
+}
+
+.select-list {
+	margin-top: 1rem;
+}
+
+.newsletter {
+	margin-top: 1.5em;
+	margin-bottom: 1em;
+}
+.newsletter__title {
+	font-size: 1rem;
+	color: $greyColor;
+	font-weight: 500;
+	margin-bottom: 0.5em;
+}
+
+.newsletter__form {
+	display: flex;
+}
+.newsletter__input {
+	min-width: toRem(200);
+	flex: 1 1 auto;
+	border-bottom: 1px solid black;
+	font-size: toRem(14);
+	color: $mainColor;
+	transition:
+		color 0.2s ease,
+		border 0.2s ease;
+	&:focus {
+		outline: none;
+		border-color: $goldColor;
+		&::placeholder {
+			color: $goldColor;
+		}
+	}
+}
+.newsletter__button {
+	font-weight: 500;
+	margin-left: 0.6em;
+	padding: 0.2em;
+	color: black;
+	border-bottom: 1px solid black;
+	font-size: toRem(14);
+	transition:
+		color 0.2s ease,
+		border 0.2s ease;
+	@media (any-hover: hover) {
+		&:hover {
+			color: $goldColor;
+			border-color: $goldColor;
+		}
+	}
+}
+
+.footer__rights {
+	font-size: 1rem;
+	@include adaptiveValue("padding-top", 36, 15, 0, $containerWidth, 767.98);
+	@include adaptiveValue("padding-bottom", 36, 15, 0, $containerWidth, 767.98);
+}
+
+@media (min-width: $mobile) {
+	.selectList {
+		margin-top: 0;
+	}
+	.footer__rights {
+		border-top: 1px solid $greyColor;
+	}
+	.footer__content {
+		display: flex;
+		justify-content: space-between;
+		gap: em(40);
+	}
+	.footer__location {
+		margin-top: em(55);
+	}
+	.newsletter {
+		margin: 0;
+	}
+	.newsletter__form {
+		margin-top: em(55);
+	}
+	.footer__location {
+		max-width: toRem(287);
+	}
+}
+
