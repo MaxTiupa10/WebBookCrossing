@@ -237,7 +237,7 @@ const AdminMenu = () => {
 					<div className="create-product__image-uploader">
 						<FileUploader
 							tabIndex={8}
-							filter={'.png,.jpg,.jpeg'}
+							filter={'.png,.jpg,.jpeg,.webp'}
 							files={files}
 							setFiles={(e) => handleFileChange(e)}
 							name="images"

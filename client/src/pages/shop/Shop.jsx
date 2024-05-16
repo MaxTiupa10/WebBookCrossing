@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Features from '../../components/features/Features.jsx';
 import GridContainer from '../../components/gridContainer/GridContainer.jsx';
 import Heading from '../../components/heading/Heading.jsx';
@@ -13,7 +13,7 @@ import './Shop.scss';
 
 function Shop() {
 	const { products } = useContext(Context);
-
+	const [customLimit, setCustomLimit ] = useState(8);
 	//TODO: Race condition - if user change quickly pages, cancel request from the previous request
 
 	const [fetchProducts, isLoading, error] = useFetching(
@@ -26,20 +26,20 @@ function Shop() {
 		},
 		true
 	);
-	
+
 	const onPageChange = (page) => {
 		products.setPage(page);
-		fetchProducts(page, products.limit);
+		fetchProducts(page, customLimit);
 	};
 
 	useEffect(() => {
-		fetchProducts(products.page, products.limit);
+		fetchProducts(products.page, customLimit);
 	}, []);
 
 	return (
 		<main className="shop">
 			<Heading key="heading" title="Shop" />
-			<ShopFilters />
+			<ShopFilters setCustomLimit={setCustomLimit} />
 			<GridContainer
 				key="shop-items"
 				items={products.products}

@@ -78,10 +78,18 @@ const Product = observer(() => {
 								),
 							},
 							{
-								title: 'Reviews [' + product.amountOfReviews + ']',
-								content: (
-									<ProductReviews reviews={product.productReviews} />
-								),
+								title:
+									'Reviews [' +
+									(product.amountOfReviews ?
+										product.amountOfReviews
+									:	0) +
+									']',
+								content:
+									product.amountOfReviews ?
+										<ProductReviews
+											reviews={product.productReviews}
+										/>
+									:	<div style={{textAlign: "center", fontSize: "1.6rem"}} className="product-tabs__description">No Reviews</div>,
 							},
 						]}
 					></Tabs>

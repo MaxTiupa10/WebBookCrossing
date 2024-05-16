@@ -10,14 +10,15 @@ function Colors({ colors, id, className }) {
 			<div className={classNames.join(' ')}>
 				{colors.map((itemColor) => {
 					const classNames = ['color-list__item'];
-					if (itemColor.id == id) classNames.push('active');
+					console.log(id);
+					if (itemColor.productId === id) classNames.push('active');
 					return (
-						<NavLink
-							to={PRODUCT_ROUTE + '/' + itemColor.productId}
+						<a
+							href={PRODUCT_ROUTE + '/' + itemColor.productId}
 							key={itemColor.productId}
 							style={{ backgroundColor: itemColor.color }}
 							className={classNames.join(' ')}
-						></NavLink>
+						></a>
 					);
 				})}
 			</div>

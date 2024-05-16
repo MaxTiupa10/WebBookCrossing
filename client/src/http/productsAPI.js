@@ -4,8 +4,8 @@ export class ProductsAPI {
 	static async fetchProducts(page = 1, limit = 5, sortBy = 'not') {
 		const response = await $host.get('products/shop', {
 			params: {
-				page: 0,
-				limit: 5,
+				page: page,
+				limit: limit,
 			},
 		});
 

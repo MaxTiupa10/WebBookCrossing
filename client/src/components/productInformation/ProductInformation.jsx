@@ -1,4 +1,4 @@
-import React, { useContext, useState, useMemo } from 'react';
+import React, { useEffect,useContext, useState, useMemo } from 'react';
 import './ProductInformation.scss';
 import { getStringPrice } from '../../utils/functions.js';
 import StarRating from '../../components/UI/starRating/StarRating.jsx';
@@ -53,6 +53,8 @@ const ProductInformation = observer(
 			});
 		}, [isMobileSize]);
 
+
+
 		function makeSlideMain(target) {
 			if (target.closest('.big-screen-slider__img')) {
 				if (target.classList.contains('big-screen-slider__img')) {
@@ -61,6 +63,11 @@ const ProductInformation = observer(
 				setCurrentSlideSrc(target.src);
 			}
 		}
+
+		useEffect(()=> {
+			setCurrentSlideSrc(product.images[0].image);
+		}, [])
+
 
 		function addItemToCart() {
 			const cartItem = {
@@ -135,7 +142,7 @@ const ProductInformation = observer(
 						<Colors
 							className="product-colors__content"
 							colors={product.productColors}
-							id={product.id}
+							id={product.productId}
 						></Colors>
 					</div>
 

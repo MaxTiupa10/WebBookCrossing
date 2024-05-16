@@ -6,7 +6,7 @@ export class ProductStore {
 		this._page = 0;
 		this._totalPage = 0;
 		this._totalCount = 0;
-		this._limit = 2;
+		this._limit = 4;
 		// fill initial array to show skeleton loader in shop
 		this._products = new Array(this._limit);
 		makeAutoObservable(this);

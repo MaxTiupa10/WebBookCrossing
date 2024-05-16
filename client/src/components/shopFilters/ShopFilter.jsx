@@ -7,12 +7,12 @@ import './ShopFilter.scss';
 import SelectWithoutDropDown from '../UI/select/SelectWithoutDropDown.jsx';
 
 const options = [
+	{ value: '4', label: '4' },
+	{ value: '8', label: '8' },
 	{ value: '16', label: '16' },
-	{ value: '32', label: '32' },
-	{ value: '64', label: '64' },
 ];
 
-const ShopFilter = observer(() => {
+const ShopFilter = observer(({setCustomLimit}) => {
 	const context = useContext(Context);
 	/** @type {ProductStore} */
 	const products = context.products;
@@ -41,6 +41,7 @@ const ShopFilter = observer(() => {
 					<div className="shop-filter__show">
 						<span>Show</span>
 						<SelectWithoutDropDown
+							onChange={(e)=>setCustomLimit(Number(e.value))}
 							className="shop-filter__show-filter"
 							options={options}
 							defaultValue={options[1]}

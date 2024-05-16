@@ -8,6 +8,7 @@
 		height: em(30);
 		border: 1px solid $lightGreyColor;
 		position: relative;
+		display: block;
 
 		&.active::after {
 			content: "";

@@ -6,7 +6,7 @@ import { useMediaQuery } from '../../hooks/useMediaQuery';
 const Pagination = ({
 	onPageChange = (page) => {},
 	pageCount = 10,
-	initialPage = 0,
+	initialPage = 1,
 	pageRange = 2,
 }) => {
 	const items = useMemo(() => {
