@@ -5,7 +5,7 @@ import { ProductStore } from '../../stores/ProductStore.js';
 import Container from '../container/Container.jsx';
 import './ShopFilter.scss';
 import SelectWithoutDropDown from '../UI/select/SelectWithoutDropDown.jsx';
-import Input from '../UI/input/Input.jsx';
+import SearchInput from '../modal/searchModal/searchInput/SearchInput.jsx';
 const options = [
 	{ value: '4', label: '4' },
 	{ value: '8', label: '8' },
@@ -149,6 +149,15 @@ const ShopFilter = observer(
 								defaultValue={sortOrders[0]}
 							/>
 						</div>
+					</div>
+					<div className="shop-filter__search-container">
+						<SearchInput
+							onChange={(e) => {
+								const res = addParam(['search', e.target.value]);
+								fetchProducts(...res);
+							}}
+							className="shop-filter__search"
+						/>
 					</div>
 				</Container>
 			</div>
