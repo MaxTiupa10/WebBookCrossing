@@ -71,3 +71,6 @@
  * @property {() => void} modalHandler.open
  * @property {() => void} modalHandler.close
  */
+
+export const USER_ROLE = 'USER';
+export const ADMIN_ROLE = 'ADMIN';

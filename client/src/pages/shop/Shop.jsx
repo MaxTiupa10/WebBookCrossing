@@ -26,7 +26,7 @@ function Shop() {
 		},
 		true
 	);
-
+	
 	const onPageChange = (page) => {
 		products.setPage(page);
 		fetchProducts(page, products.limit);

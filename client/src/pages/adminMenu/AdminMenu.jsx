@@ -7,18 +7,21 @@ import Textarea from '../../components/UI/textarea/Textarea.jsx';
 import ColorPicker from '../../components/UI/colorPicker/ColorPicker.jsx';
 import Slider from '../../components/UI/slider/Slider.jsx';
 import FileUploader from '../../components/UI/fileUploader/FileUploader.jsx';
+import { ProductsAPI } from '../../http/productsAPI.js';
+
+const emptyProduct = {
+	productName: '',
+	productCategory: '',
+	productSku: '',
+	productPrice: '',
+	productDescription: '',
+	productFullDescription: '',
+	productColor: '#ffffff',
+	images: [],
+};
 
 const AdminMenu = () => {
-	const [product, setProduct] = useState({
-		productName: '',
-		productCategory: '',
-		productSku: '',
-		productPrice: '',
-		productDescription: '',
-		productFullDescription: '',
-		productColor: '#ffffff',
-		images: [],
-	});
+	const [product, setProduct] = useState(emptyProduct);
 
 	const [files, setFiles] = useState([]);
 	const filteredImages = useMemo(() => {
@@ -123,7 +126,20 @@ const AdminMenu = () => {
 		}
 
 		if (!anyHasError) {
-			// post on back-end
+			product.images = product.images.map((imageBytes, index) => {
+				return {
+					image: imageBytes,
+					name: product.productName + ' ' + (index + 1),
+				};
+			});
+			console.log(product);
+			ProductsAPI.createNewProduct(product)
+				.then(() => {
+					setProduct(emptyProduct);
+				})
+				.catch((err) => {
+					console.error(err);
+				});
 		}
 	}
 

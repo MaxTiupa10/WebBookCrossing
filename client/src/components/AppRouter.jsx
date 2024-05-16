@@ -4,13 +4,14 @@ import { adminRoutes, authRoutes, publicRoutes } from '../utils/routes';
 import { Context } from '../index';
 import { observer } from 'mobx-react';
 import { HOME_ROUTE } from '../utils/paths';
+import { ADMIN_ROLE } from '../types';
 
 const AppRouter = observer(() => {
 	const { user } = useContext(Context);
 
 	return (
 		<Routes>
-			{user.userData.role === 'admin' &&
+			{user.userData.role === ADMIN_ROLE &&
 				adminRoutes.map(({ path, Component }) => (
 					<Route key={path} path={path} element={<Component />} />
 				))}

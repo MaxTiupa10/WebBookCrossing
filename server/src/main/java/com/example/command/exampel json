@@ -1,0 +1,20 @@
+для додавання товару
+{
+    "productId":"4",
+    "productName":"chair",
+    "productDescription":"description",
+    "productPrice":"2000",
+    "images":[
+        {"name":"sdfsf","image":[1,1,1]},
+        {"name":"sdfsf","image":[1,1,1]},
+        {"name":"sdfsf","image":[1,1,1]}
+        ],
+    "productCategory":"chair",
+    "productSku":"1f22",
+    "productColor":"red",
+    "productReviews":[
+        {"userId":"1","massage":"fsd f sdfs f","rate":"3"},
+        {"userId":"2","massage":"fsd f sdfs f","rate":"2"},
+        {"userId":"3","massage":"fsd f sdfs f","rate":"1"}
+    ]
+}

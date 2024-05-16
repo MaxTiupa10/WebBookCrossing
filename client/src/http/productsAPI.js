@@ -1,15 +1,15 @@
 import { $authHost, $host } from '.';
 
 export class ProductsAPI {
-	static async fetchProducts(page = 1, limit = 5, sort = 'not') {
+	static async fetchProducts(page = 1, limit = 5, sortBy = 'not') {
 		const response = await $host.get('products/shop', {
 			params: {
-				_page: page,
-				_limit: limit,
-				_sort: sort,
+				page: 0,
+				limit: 5,
 			},
 		});
 
+		console.log(response);
 		return response.data;
 	}
 
@@ -22,9 +22,8 @@ export class ProductsAPI {
 	 * @param {IFullProduct} product - new product
 	 */
 	static async createNewProduct(product) {
-		const response = await $authHost.post('products/add', {
-			params: { ...product },
-		});
+		const response = await $authHost.post('products/add', product);
+		console.log(response);
 		return response.data;
 	}
 }

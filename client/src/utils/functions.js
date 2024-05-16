@@ -1,3 +1,5 @@
+import { jwtDecode } from 'jwt-decode';
+
 let bodyLockStatus = true;
 export let bodyLockToggle = (delay = 500) => {
 	if (document.documentElement.classList.contains('lock')) {
@@ -90,4 +92,19 @@ export function getStringPrice(startPrice, currency = '₴') {
 	}
 	if (startPrice.length < 3) res = '0' + res;
 	return currency + ' ' + res;
+}
+
+export function verifyJWT(token) {
+	const decodedToken = jwtDecode(token);
+	if (!decodedToken) {
+		return false;
+	} else {
+		// Check expiration time
+		const currentTime = Date.now() / 1000; // Convert milliseconds to seconds
+		if (decodedToken.exp < currentTime) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 }

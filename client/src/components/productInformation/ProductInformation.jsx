@@ -32,10 +32,9 @@ const ProductInformation = observer(
 		}, [product]);
 
 		let slides = useMemo(() => {
-			return [
-				<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fG1vYmlsZSUyMHBob25lfGVufDB8fDB8fHww" />,
-				<img src="https://i02.appmifile.com/373_operatorx_operatorx_opx/10/05/2023/657e399a69e188fb194c3804f33fb67d!348x348.png" />,
-			];
+			return product.images.map((imageObj) => {
+				return <img src={imageObj.image} alt={imageObj.name} />;
+			});
 		}, [product]);
 
 		slides = useMemo(() => {

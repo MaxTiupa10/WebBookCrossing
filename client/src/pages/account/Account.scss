@@ -1,0 +1,58 @@
+@import '../../utils/common.scss';
+
+.account {
+	&__profile {
+		margin-top: em(15);
+	}
+	&__loader {
+		font-size: 4rem;
+		margin-left: 50%;
+		transform: translateX(-50%);
+	}
+	&__profile {
+		display: flex;
+		justify-content: space-between;
+		gap: em(20);
+		flex-direction: column;
+		@media (min-width: $mobileSmall) {
+			flex-direction: row;
+			align-items: flex-end;
+		}
+	}
+	&__name {
+		font-size: em(34);
+		font-weight: 500;
+	}
+	&__contacts {
+		font-size: em(20);
+	}
+	&__email {
+		@extend %linkHover;
+	}
+	&__phone-number {
+		margin-top: em(5);
+	}
+	@media (min-width: $mobile) {
+		&__name {
+			font-size: em(42);
+		}
+		&__contacts {
+			font-size: em(24);
+		}
+		&__phone-number {
+			margin-top: em(10);
+		}
+	}
+
+	// .account__buttons
+	&__buttons {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: toRem(15);
+		flex-wrap: wrap;
+	}
+
+	&__button {
+	}
+}

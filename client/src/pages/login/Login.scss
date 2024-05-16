@@ -40,6 +40,11 @@
 
 	// .login__buttons
 	&__buttons {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: toRem(15);
+		flex-wrap: wrap;
 	}
 
    &__button {
@@ -51,4 +56,23 @@
          height: toRem(64);
       }
    }
+	// .login__footer-text
+	&__footer-text {
+		font-size: toRem(14);
+		display: flex;
+		align-items: center;
+		gap: toRem(5);
+		flex-wrap: wrap;
+		@media (min-width: $mobile) {
+			font-size: toRem(18);
+		}
+	}
+
+	// .login__footer-link
+	&__footer-link {
+		display: inline-block;
+		font-weight: 600;
+		color: $darkGreyColor;
+		@extend %linkHover;
+	}
 }

@@ -1,19 +1,20 @@
 import { observer } from 'mobx-react';
 import React, { useContext, useState } from 'react';
-import { redirect } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Button from '../../components/UI/button/Button';
+import Checkbox from '../../components/UI/checkbox/Checkbox';
+import Input from '../../components/UI/input/Input';
+import PasswordInput from '../../components/UI/passwordInput/PasswordInput';
 import Container from '../../components/container/Container';
+import Heading from '../../components/heading/Heading';
 import { UserAPI } from '../../http/userAPI';
 import { Context } from '../../index';
-import { ACCOUNT_ROUTE } from '../../utils/paths';
+import { ACCOUNT_ROUTE, REGISTRATION_ROUTE } from '../../utils/paths';
 import './Login.scss';
-import Button from '../../components/UI/button/Button';
-import Input from '../../components/UI/input/Input';
-import Checkbox from '../../components/UI/checkbox/Checkbox';
-import Heading from '../../components/heading/Heading';
-import PasswordInput from '../../components/UI/passwordInput/PasswordInput';
 
 const Login = observer(() => {
 	const { user } = useContext(Context);
+	const navigation = useNavigate();
 
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -21,17 +22,18 @@ const Login = observer(() => {
 
 	async function signIn(e) {
 		e.preventDefault();
-		console.log('Sigh In');
-		user.setIsAuth(true);
 
-		redirect(ACCOUNT_ROUTE);
-		// try {
-		// 	const data = await UserAPI.login(email, password);
-		// 	console.log(data);
-		// 	user.setIsAuth(true);
-		// } catch (error) {
-		// 	console.log(error);
-		// }
+		try {
+			const data = await UserAPI.login(email, password);
+			console.log(data);
+			user.setIsAuth(true);
+			user.setUserData(data);
+			user.setUserId(data.userId);
+			user.setRole(data.role);
+			navigation(ACCOUNT_ROUTE);
+		} catch (error) {
+			console.log(error);
+		}
 	}
 
 	return (
@@ -77,6 +79,15 @@ const Login = observer(() => {
 						<Button className="login__button" type="submit" id="sign-in">
 							Sign in
 						</Button>
+						<div className="login__footer-text">
+							Have no account ?
+							<Link
+								className="login__footer-link"
+								to={REGISTRATION_ROUTE}
+							>
+								Register !
+							</Link>
+						</div>
 					</section>
 				</form>
 			</Container>

@@ -37,6 +37,14 @@
       margin-top: toRem(5);
    }
 
+	&__buttons {
+      display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: toRem(15);
+		flex-wrap: wrap;
+   }
+
    &__button {
       width: 100%;
 		@media (min-width:$mobileSmall){
@@ -46,4 +54,23 @@
          height: toRem(64);
       }
    }
+	// .registration__footer-text
+	&__footer-text {
+		font-size: toRem(14);
+		display: flex;
+		align-items: center;
+		gap: toRem(5);
+		flex-wrap: wrap;
+		@media (min-width: $mobile) {
+			font-size: toRem(18);
+		}
+	}
+
+	// .registration__footer-link
+	&__footer-link {
+		display: inline-block;
+		font-weight: 600;
+		color: $darkGreyColor;
+		@extend %linkHover;
+	}
 }

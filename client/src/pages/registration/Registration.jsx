@@ -1,10 +1,10 @@
 import { observer } from 'mobx-react';
 import React, { useContext, useState } from 'react';
-import { redirect } from 'react-router-dom';
+import { Link, redirect, useNavigate } from 'react-router-dom';
 import Container from '../../components/container/Container';
 import { UserAPI } from '../../http/userAPI';
 import { Context } from '../../index';
-import { ACCOUNT_ROUTE } from '../../utils/paths';
+import { ACCOUNT_ROUTE, LOGIN_ROUTE } from '../../utils/paths';
 import Button from '../../components/UI/button/Button';
 import Input from '../../components/UI/input/Input';
 import './Registration.scss';
@@ -13,40 +13,61 @@ import Heading from '../../components/heading/Heading';
 
 const Registration = observer(() => {
 	const { user } = useContext(Context);
+	const navigation = useNavigate();
 
-	const [userName, setUserName] = useState('');
+	const [firstName, setFirstName] = useState('');
+	const [lastName, setLastName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
 	async function signUp(e) {
 		e.preventDefault();
-		console.log('Sigh In');
-		user.setIsAuth(true);
 
-		redirect(ACCOUNT_ROUTE);
-		// try {
-		// 	e.preventDefault();
-		// 	const data = await UserAPI.registration(userName, email, password);
-		// 	user.setIsAuth(true);
-		// } catch (error) {
-		// 	console.log(error);
-		// }
+		try {
+			e.preventDefault();
+			const data = await UserAPI.registration(
+				firstName,
+				lastName,
+				email,
+				password
+			);
+			user.setIsAuth(true);
+			console.log(data);
+			user.setUserData(data);
+			user.setUserId(data.userId);
+			user.setRole(data.role);
+			navigation(ACCOUNT_ROUTE);
+		} catch (error) {
+			console.log(error);
+		}
 	}
 
 	return (
 		<main>
-			<Heading title='Registration'/>
+			<Heading title="Registration" />
 			<Container className="registration">
 				<form method="POST" onSubmit={signUp}>
 					<h1 className="registration__form-title">Sign up</h1>
 					<section className="registration__field">
 						<Input
-							id="name"
-							name="name"
-							autoComplete="name"
-							label="User Name"
+							id="firstName"
+							name="firstName"
+							autoComplete="firstName"
+							label="First Name"
 							onChange={(e) => {
-								setUserName(e.target.value);
+								setFirstName(e.target.value);
+							}}
+							required
+						/>
+					</section>
+					<section className="registration__field">
+						<Input
+							id="lastName"
+							name="lastName"
+							autoComplete="lastName"
+							label="Last Name"
+							onChange={(e) => {
+								setLastName(e.target.value);
 							}}
 							required
 						/>
@@ -80,10 +101,23 @@ const Registration = observer(() => {
 							Eight or more characters.
 						</div>
 					</section>
-					<section className="registration__button">
-						<Button className="login__button" type="submit" id="sign-up">
+					<section className="registration__buttons">
+						<Button
+							className="registration__button"
+							type="submit"
+							id="sign-up"
+						>
 							Sign up
 						</Button>
+						<div className="registration__footer-text">
+							Have account ?
+							<Link
+								className="registration__footer-link"
+								to={LOGIN_ROUTE}
+							>
+								Log in !
+							</Link>
+						</div>
 					</section>
 				</form>
 			</Container>

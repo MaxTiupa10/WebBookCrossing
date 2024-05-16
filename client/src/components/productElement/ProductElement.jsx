@@ -30,10 +30,12 @@ const ProductElement = ({ product }) => {
 		setIsInFavorites(!isInFavorites);
 	};
 
+	console.log(product.images[0]);
+
 	return (
 		<article key={product.productId} className="item-product">
 			<Link to={productLink} className="item-product__image-ibg">
-				<img src={product.images[0]} alt={product.productName} />
+				<img src={product.images[0].image} alt={product.productName} />
 			</Link>
 			<div className="item-product__content">
 				<Link to={productLink} className="item-product__name">
