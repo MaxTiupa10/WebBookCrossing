@@ -107,13 +107,7 @@ const Header = observer(({ getModalHandler }) => {
 						<li className="actions-header__item account-btn">
 							{accountButton}
 						</li>
-						<li className="actions-header__item">
-							<button
-								type="button"
-								className="actions-header__icon _icon-search"
-								onClick={() => getModalHandler(SEARCH_MODAL).open()}
-							></button>
-						</li>
+
 						<li className="actions-header__item">
 							<button
 								type="button"

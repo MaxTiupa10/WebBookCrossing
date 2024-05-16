@@ -32,7 +32,6 @@
 
 	&__tabs-container {
 		border-top: 1px solid $greyColor;
-		border-bottom: 1px solid $greyColor;
 		@include adaptiveValue(padding-top, 48, 25, 0, $containerWidth, $mobileWidth);
 		@include adaptiveValue(padding-bottom, 65, 30, 0, $containerWidth, $mobileWidth);
 	}

@@ -156,6 +156,10 @@ const ShopFilter = observer(
 								const res = addParam(['search', e.target.value]);
 								fetchProducts(...res);
 							}}
+							onBlur={(e) => {
+								const res = addParam(['search', e.target.value]);
+								fetchProducts(...res);
+							}}
 							className="shop-filter__search"
 						/>
 					</div>
