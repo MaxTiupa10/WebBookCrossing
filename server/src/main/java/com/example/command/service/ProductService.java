@@ -30,9 +30,9 @@ public class ProductService {
         Pageable pageable = PageRequest.of(page, limit, getSort(sortDirection, sortBy));
         if (minPrice != null && maxPrice != null) {
             if (productName != null && !productName.isEmpty()) {
-                return productRepository.findByProductNameContainingIgnoreCaseAndProductPriceBetween(productName.toLowerCase(), minPrice, maxPrice + 1, (PageRequest) pageable);
+                return productRepository.findByProductNameContainingIgnoreCaseAndProductPriceBetween(productName.toLowerCase(), minPrice-1, maxPrice + 1, (PageRequest) pageable);
             } else {
-                return productRepository.findByProductPriceBetween(minPrice, maxPrice + 1, (PageRequest) pageable);
+                return productRepository.findByProductPriceBetween(minPrice-1, maxPrice + 1, (PageRequest) pageable);
             }
         } else if (productName != null && !productName.isEmpty()) {
             return productRepository.findByProductNameContainingIgnoreCase(productName.toLowerCase(), (PageRequest) pageable);

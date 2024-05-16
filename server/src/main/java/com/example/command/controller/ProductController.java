@@ -40,14 +40,14 @@ public class ProductController {
     //треба доробити пошук за параметром    //swager
     //робочий приклад http://localhost:8080/api/products/shop?_page=2&_limit=3&_sort=someType
     //http://localhost:8080/api/products/shop?page=2&limit=3&sort=someType&sortBy=price&minPrice=0&maxPrice=1000000
-    @GetMapping("/shop")
+@GetMapping("/shop")
     public ResponseEntity<Page<Product>> getAllWithPagination(
             @RequestParam(name = "page", defaultValue = "0") int page,
             @RequestParam(name = "limit", defaultValue = "8") int limit,
             @RequestParam(name = "sort", defaultValue = "asc") String sort,
             @RequestParam(name = "sortBy", required = false) String sortBy,
             @RequestParam(name = "minPrice",defaultValue = "0") Integer minPrice,
-            @RequestParam(name = "maxPrice", required = false) Integer maxPrice,
+            @RequestParam(name = "maxPrice", defaultValue = "1000000") Integer maxPrice,
             @RequestParam(name = "search", required = false) String search) {
 
         Page<Product> product = productService.productsPagination(page, limit, sort, sortBy, minPrice, maxPrice, search);

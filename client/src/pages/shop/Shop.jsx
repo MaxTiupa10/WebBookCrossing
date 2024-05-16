@@ -14,11 +14,11 @@ import './Shop.scss';
 function Shop() {
 	const { products } = useContext(Context);
 	const [customLimit, setCustomLimit ] = useState(8);
+	const [curPage, setCurPage] = useState(0);
 	//TODO: Race condition - if user change quickly pages, cancel request from the previous request
-
 	const [fetchProducts, isLoading, error] = useFetching(
-		async (page, limit) => {
-			await ProductsAPI.fetchProducts(page, limit).then((data) => {
+		async (...args) => {
+			await ProductsAPI.fetchProducts(...args).then((data) => {
 				products.setProducts(data.content);
 				products.setTotalPage(data.totalPages);
 				products.setTotalCount(data.totalElements);
@@ -29,17 +29,17 @@ function Shop() {
 
 	const onPageChange = (page) => {
 		products.setPage(page);
-		fetchProducts(page, customLimit);
+		setCurPage(page);
+		fetchProducts(["page", page], ["limit", customLimit], ["sortBy", "none"]);
 	};
-
 	useEffect(() => {
-		fetchProducts(products.page, customLimit);
+		fetchProducts(["page", products.page], ["limit", customLimit], ["sortBy", "none"]);
 	}, []);
 
 	return (
 		<main className="shop">
 			<Heading key="heading" title="Shop" />
-			<ShopFilters setCustomLimit={setCustomLimit} />
+			<ShopFilters curPage={curPage} fetchProducts={fetchProducts} setCustomLimit={setCustomLimit} />
 			<GridContainer
 				key="shop-items"
 				items={products.products}

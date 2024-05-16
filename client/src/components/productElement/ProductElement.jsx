@@ -30,7 +30,6 @@ const ProductElement = ({ product }) => {
 		setIsInFavorites(!isInFavorites);
 	};
 
-	console.log(product.images[0]);
 
 	return (
 		<article key={product.productId} className="item-product">

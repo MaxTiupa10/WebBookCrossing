@@ -1,12 +1,11 @@
 import { $authHost, $host } from '.';
 
 export class ProductsAPI {
-	static async fetchProducts(page = 1, limit = 5, sortBy = 'not') {
+	static async fetchProducts(...args ) {
+		const resObj = {}
+		args.forEach((arg)=>resObj[arg[0]] = arg[1])
 		const response = await $host.get('products/shop', {
-			params: {
-				page: page,
-				limit: limit,
-			},
+			params: resObj
 		});
 
 		console.log(response);
@@ -17,6 +16,7 @@ export class ProductsAPI {
 		const response = await $host.get('products/item/' + id);
 		return response.data;
 	}
+
 
 	/**
 	 * @param {IFullProduct} product - new product

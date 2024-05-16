@@ -10,11 +10,14 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		flex-wrap: wrap;
+		gap: 15px;
 	}
 
 	// .shop-filter__filters
 	&__filters {
 		display: flex;
+		flex-wrap: wrap;
 	}
 
 	// .shop-filter__filter
@@ -22,12 +25,14 @@
 		display: flex;
 		align-items: center;
 		gap: em(30);
+		flex-wrap: wrap;
 	}
 
 	// .shop-filter__buttons
 	&__buttons {
 		display: flex;
 		gap: em(20);
+		flex-wrap: wrap;
 	}
 
 	// .shop-filter__filter-button
@@ -35,11 +40,13 @@
 		font-size: toRem(17);
 		display: flex;
 		gap: toRem(10);
+		flex-wrap: wrap;
 	}
 
 	// .shop-filter__info
 	&__info {
 		display: flex;
+		flex-wrap: wrap;
 		align-items: center;
 		gap: em(20);
 		&::before {
@@ -49,6 +56,17 @@
 			width: em(2);
 			height: em(27);
 		}
+	}
+	&__input-container {
+		display: flex;
+	}
+	&__input {
+		margin: 0 .5em;
+		width: 100px;
+		height: 40px;
+		border-radius: 5px;
+		border: 1px solid lightgray;
+		padding: 0 15px;
 	}
 
 	// .shop-filter__text
@@ -60,6 +78,8 @@
 	&__display {
 		display: flex;
 		gap: em(15);
+		flex-wrap: wrap;
+		
 	}
 
 	// .shop-filter__show
@@ -72,8 +92,8 @@
 
 	// .shop-filter__show-filter
 	&__show-filter {
-		flex: 0 0 em(50);
-		width: em(50);
+		width: 40px;
+		text-align: center;
 	}
 
 	// .shop-filter__sort
@@ -85,7 +105,9 @@
 
 	// .shop-filter__sort-filter
 	&__sort-filter {
-		flex: 0 0 em(70);
-		width: em(70);
+		width: 180px;
+		&_little {
+			width: 80px;
+		}
 	}
 }
